@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz sobre Condrictes e Osteíctes</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            color: #007BFF;
+        }
+        #quiz {
+            display: none;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            width: 300px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .question {
+            margin: 20px 0;
+            font-size: 20px;
+            text-align: center; /* Centraliza o texto da pergunta */
+        }
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .start-btn {
+            background-color: #28a745;
+            color: white;
+        }
+        .option {
+            display: block;
+            margin: 10px auto;
+            padding: 10px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            width: 80%; /* Define uma largura para as opções */
+        }
+        .option:hover {
+            background-color: #d1d1d1;
+        }
+        .correct {
+            background-color: #28a745 !important;
+            color: white;
+        }
+        .incorrect {
+            background-color: #dc3545 !important;
+            color: white;
+        }
+        #nextBtn {
+            display: none;
+            background-color: #007BFF;
+            color: white;
+        }
+        #feedback {
+            margin: 15px 0;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        #score {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Quiz sobre Condrictes e Osteíctes</h1>
+    <button class="start-btn" id="startBtn" onclick="startQuiz()">Iniciar Quiz</button>
+
+    <div id="quiz">
+        <div id="score">
+            Acertos: <span id="correctCount">0</span> | Erros: <span id="incorrectCount">0</span>
+        </div>
+        <div id="questionContainer" class="question"></div>
+        <div id="optionsContainer"></div>
+        <div id="feedback"></div>
+        <button id="nextBtn" onclick="nextQuestion()">Próxima Pergunta</button>
+    </div>
+
+    <footer>
+        <p>Autores: Alex e Monique</p>
+    </footer>
+
+    <audio id="correctSound" src="audio/acerto.mp3" preload="auto"></audio>
+    <audio id="incorrectSound" src="audio/fail-234710.mp3" preload="auto"></audio>
+
+    <script>
+        
+        const questions = [
+            {
+                question: "Qual das seguintes espécies é um condrícte?",
+                options: ["Tubarão-branco", "Salmão", "Truta", "Bacalhau"],
+                answer: 0
+            },
+            {
+                question: "Os osteíctes têm esqueleto composto principalmente por qual material?",
+                options: ["Cartilagem", "Osso", "Queratina", "Colágeno"],
+                answer: 1
+            },
+            {
+                question: "Qual é a principal característica dos condrictes?",
+                options: ["Esqueleto ósseo", "Esqueleto cartilaginoso", "Brânquias internas", "Oviparidade"],
+                answer: 1
+            },
+            {
+                question: "Qual das seguintes características é exclusiva dos osteíctes?",
+                options: ["Escamas", "Bexiga natatória", "Nadadeiras pares", "Brânquias externas"],
+                answer: 1
+            },
+            {
+                question: "Os tubarões pertencem a qual grupo?",
+                options: ["Osteíctes", "Condrictes", "Agnatha", "Sarcopterygii"],
+                answer: 1
+            },
+            {
+                question: "Qual é o maior peixe do mundo?",
+                options: ["Tubarão-baleia", "Tubarão-branco", "Manta", "Salmão"],
+                answer: 0
+            },
+            {
+                question: "Os peixes ósseos respiram principalmente através de:",
+                options: ["Brânquias", "Pulmões", "Pele", "Ossos"],
+                answer: 0
+            },
+            {
+                question: "Qual dos seguintes peixes é um exemplo de peixe cartilaginoso?",
+                options: ["Raia", "Truta", "Sardinha", "Atum"],
+                answer: 0
+            },
+            {
+                question: "Qual é a principal diferença entre condrictes e osteíctes?",
+                options: ["Forma do corpo", "Tipo de esqueleto", "Habitat", "Comportamento"],
+                answer: 1
+            },
+            {
+                question: "Qual dos seguintes peixes não possui bexiga natatória?",
+                options: ["Tubarão", "Tilápia", "Perca", "Salmão"],
+                answer: 0
+            },
+            {
+                question: "As brânquias dos condrictes são:",
+                options: ["Internas", "Externas", "Absorventes", "Articuladas"],
+                answer: 0
+            },
+            {
+                question: "Qual é a principal fonte de alimento dos tubarões?",
+                options: ["Plâncton", "Peixes menores", "Algas", "Crustáceos"],
+                answer: 1
+            },
+            {
+                question: "Os osteíctes podem ser divididos em quantas classes principais?",
+                options: ["1", "2", "3", "4"],
+                answer: 1
+            },
+            {
+                question: "Os tubarões são conhecidos por:",
+                options: ["Falta de dentes", "Esqueleto cartilaginoso", "Múltiplas brânquias", "Nadar lentamente"],
+                answer: 1
+            },
+            {
+                question: "Qual dos seguintes é um exemplo de um peixe ósseo?",
+                options: ["Tubarão-mako", "Peixe-lua", "Peixe-palhaço", "Raia"],
+                answer: 2
+            },
+            {
+                question: "Os peixes cartilaginosos são geralmente encontrados em que ambiente?",
+                options: ["Águas doces", "Águas rasas", "Ambos", "Águas salgadas"],
+                answer: 3
+            },
+            {
+                question: "Qual é o nome da estrutura que ajuda os peixes a manter a flutuabilidade?",
+                options: ["Bexiga natatória", "Fígado", "Coração", "Brânquias"],
+                answer: 0
+            },
+            {
+                question: "Qual é a principal função das escamas nos peixes?",
+                options: ["Respiração", "Proteção", "Flutuação", "Reprodução"],
+                answer: 1
+            },
+            {
+                question: "Os condrictes possuem quantas aberturas branquiais?",
+                options: ["2", "3", "5", "7"],
+                answer: 2
+            },
+            {
+                question: "Qual dos seguintes peixes é considerado um predador?",
+                options: ["Tilápia", "Bacalhau", "Tubarão", "Sardinha"],
+                answer: 2
+            },
+            {
+                question: "Qual grupo de peixes é conhecido por suas nadadeiras pares?",
+                options: ["Agnatha", "Condrictes", "Osteíctes", "Sarcopterygii"],
+                answer: 2
+            },
+            {
+                question: "Qual é a importância ecológica dos condrictes?",
+                options: ["Predadores de topo", "Competidores de habitat", "Reprodutores", "Rastreamento de temperatura"],
+                answer: 0
+            },
+            {
+                question: "Os peixes ósseos geralmente têm:",
+                options: ["Menos diversidade que os condrictes", "Maior diversidade", "Características comuns com mamíferos", "Nenhuma relação com água"],
+                answer: 1
+            },
+            {
+                question: "Qual peixe é famoso por seu comportamento de construção de ninhos?",
+                options: ["Peixe-lua", "Peixe-palhaço", "Peixe-gato", "Peixe-borboleta"],
+                answer: 1
+            },
+            {
+                question: "Qual peixe é conhecido por suas habilidades de camuflagem?",
+                options: ["Peixe-lua", "Peixe-folha", "Peixe-palhaço", "Peixe-esponja"],
+                answer: 1
+            },
+            {
+                question: "Qual é a principal fonte de alimento dos peixes ósseos?",
+                options: ["Plâncton", "Algas", "Peixes menores", "Crustáceos"],
+                answer: 2
+            },
+            {
+                question: "Os condrictes são conhecidos por serem:",
+                options: ["Vivíparos", "Ovovivíparos", "Oviparos", "Todos os anteriores"],
+                answer: 3
+            },
+            {
+                question: "Os tubarões geralmente têm quantos dentes?",
+                options: ["10-15", "20-30", "30-50", "50-300"],
+                answer: 3
+            },
+            {
+                question: "Os peixes ósseos podem ser encontrados em qual tipo de ambiente?",
+                options: ["Somente em água doce", "Somente em água salgada", "Ambos", "Nenhum"],
+                answer: 2
+            },
+            {
+                question: "Os condrictes têm um sistema circulatório:",
+                options: ["Fechado", "Aberto", "Misturado", "Nenhum"],
+                answer: 0
+            },
+            {
+                question: "Qual das seguintes estruturas é única para os condrictes?",
+                options: ["Bexiga natatória", "Fígado", "Esqueleto cartilaginoso", "Brânquias"],
+                answer: 2
+            },
+            {
+                question: "Os peixes ósseos são mais diversos em:",
+                options: ["Águas profundas", "Águas rasas", "Águas tropicais", "Águas geladas"],
+                answer: 2
+            },
+            {
+                question: "Os condrictes têm quantas câmaras no coração?",
+                options: ["1", "2", "3", "4"],
+                answer: 2
+            },
+            {
+                question: "Qual é a função das barbatanas nos peixes?",
+                options: ["Natação", "Respiração", "Nutrientes", "Reprodução"],
+                answer: 0
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let correctAnswers = 0;
+        let incorrectAnswers = 0;
+
+        function startQuiz() {
+            document.getElementById("startBtn").style.display = "none";
+            document.getElementById("quiz").style.display = "block";
+            currentQuestionIndex = 0;
+            correctAnswers = 0; // Reinicia a contagem de acertos
+            incorrectAnswers = 0; // Reinicia a contagem de erros
+            updateScore();
+            showQuestion();
+        }
+
+        function updateScore() {
+            document.getElementById("correctCount").textContent = correctAnswers;
+            document.getElementById("incorrectCount").textContent = incorrectAnswers;
+        }
+
+        function showQuestion() {
+            const questionContainer = document.getElementById("questionContainer");
+            const optionsContainer = document.getElementById("optionsContainer");
+            const feedback = document.getElementById("feedback");
+            const nextBtn = document.getElementById("nextBtn");
+
+            feedback.textContent = ""; // Limpa o feedback
+            nextBtn.style.display = "none"; // Oculta o botão de próxima pergunta
+
+            const currentQuestion = questions[currentQuestionIndex];
+            questionContainer.textContent = currentQuestion.question;
+            optionsContainer.innerHTML = "";
+
+            currentQuestion.options.forEach((option, index) => {
+                const button = document.createElement("button");
+                button.textContent = option;
+                button.className = "option";
+                button.onclick = () => selectOption(index);
+                optionsContainer.appendChild(button);
+            });
+        }
+
+        function selectOption(selectedIndex) {
+            const currentQuestion = questions[currentQuestionIndex];
+            const feedback = document.getElementById("feedback");
+            const correctSound = document.getElementById("correctSound");
+            const incorrectSound = document.getElementById("incorrectSound");
+
+            if (selectedIndex === currentQuestion.answer) {
+                feedback.textContent = "Você acertou!";
+                correctSound.play();
+                correctAnswers++; // Incrementa contagem de acertos
+                document.querySelectorAll('.option')[selectedIndex].classList.add("correct");
+            } else {
+                feedback.textContent = "Você errou!";
+                incorrectSound.play();
+                incorrectAnswers++; // Incrementa contagem de erros
+                document.querySelectorAll('.option')[selectedIndex].classList.add("incorrect");
+                document.querySelectorAll('.option')[currentQuestion.answer].classList.add("correct"); // Mostra a resposta correta
+            }
+
+            updateScore(); // Atualiza a contagem de pontos
+
+            // Muda a cor de todas as opções
+            document.querySelectorAll('.option').forEach((button, index) => {
+                button.disabled = true; // Desabilita todas as opções
+            });
+
+            document.getElementById("nextBtn").style.display = "block"; // Mostra o botão de próxima pergunta
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                showQuestion();
+            } else {
+                alert(`Quiz finalizado!\nVocê acertou ${correctAnswers} perguntas e errou ${incorrectAnswers} perguntas.`);
+                location.reload(); // Reinicia o quiz
+            }
+        }
+    </script>
+      <audio>
+        <source src="audio/click-234708.mp3" type="audio/mpeg">
+      </audio>
+</body>
+</html>
