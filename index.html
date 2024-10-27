@@ -109,170 +109,105 @@
     <script>
         
         const questions = [
-            {
-                question: "Qual das seguintes espécies é um condrícte?",
-                options: ["Tubarão-branco", "Salmão", "Truta", "Bacalhau"],
-                answer: 0
-            },
-            {
-                question: "Os osteíctes têm esqueleto composto principalmente por qual material?",
-                options: ["Cartilagem", "Osso", "Queratina", "Colágeno"],
+                {
+                question: "Qual é a principal característica que diferencia condrictes (como tubarões) de osteíctes (como peixes ósseos)?",
+                options: ["Condrictes têm esqueleto de osso e osteíctes de cartilagem.", "Condrictes têm esqueleto de cartilagem e osteíctes de osso.", "Ambos têm esqueleto de osso.", "Ambos têm esqueleto de cartilagem."],
                 answer: 1
             },
             {
-                question: "Qual é a principal característica dos condrictes?",
-                options: ["Esqueleto ósseo", "Esqueleto cartilaginoso", "Brânquias internas", "Oviparidade"],
-                answer: 1
-            },
-            {
-                question: "Qual das seguintes características é exclusiva dos osteíctes?",
-                options: ["Escamas", "Bexiga natatória", "Nadadeiras pares", "Brânquias externas"],
-                answer: 1
-            },
-            {
-                question: "Os tubarões pertencem a qual grupo?",
-                options: ["Osteíctes", "Condrictes", "Agnatha", "Sarcopterygii"],
-                answer: 1
-            },
-            {
-                question: "Qual é o maior peixe do mundo?",
-                options: ["Tubarão-baleia", "Tubarão-branco", "Manta", "Salmão"],
-                answer: 0
-            },
-            {
-                question: "Os peixes ósseos respiram principalmente através de:",
-                options: ["Brânquias", "Pulmões", "Pele", "Ossos"],
-                answer: 0
-            },
-            {
-                question: "Qual dos seguintes peixes é um exemplo de  condrictes?",
-                options: ["Arraia", "Truta", "Sardinha", "Atum"],
-                answer: 0
-            },
-            {
-                question: "Qual é a principal diferença entre condrictes e osteíctes?",
-                options: ["Forma do corpo", "Tipo de esqueleto", "Habitat", "Comportamento"],
-                answer: 1
-            },
-            {
-                question: "Qual dos seguintes peixes não possui bexiga natatória?",
-                options: ["Tubarão", "Tilápia", "Perca", "Salmão"],
-                answer: 0
-            },
-            {
-                question: "Qual é a principal fonte de alimento dos tubarões?",
-                options: ["Plâncton", "Peixes menores", "Algas", "Crustáceos"],
-                answer: 1
-            },
-            {
-                question: "Os osteíctes podem ser divididos em quantas classes principais?",
-                options: ["1", "2", "3", "4"],
-                answer: 1
-            },
-            {
-                question: "Os tubarões são conhecidos por:",
-                options: ["Falta de dentes", "Esqueleto cartilaginoso", "Múltiplas brânquias", "Nadar lentamente"],
-                answer: 1
-            },
-            {
-                question: "Qual dos seguintes é um exemplo de um peixe ósseo?",
-                options: ["Tubarão-mako", "Peixe-lua", "Peixe-palhaço", "Raia"],
+                question: "Qual é um exemplo de um peixe que pertence ao grupo dos condrictes?",
+                options: ["Salmão", "Atum", "Tubarão", "Tilápia"],
                 answer: 2
             },
             {
-                question: "Os peixes cartilaginosos são geralmente encontrados em que ambiente?",
-                options: ["Águas doces", "Águas rasas", "Ambos", "Águas salgadas"],
-                answer: 3
+                question: "Os condrictes possuem escamas especiais chamadas:",
+                options: ["Escamas de osso", "Escamas placoides", "Escamas ctenoides", "Escamas de queratina"],
+                answer: 1
             },
             {
-                question: "Qual é o nome da estrutura que ajuda os osteíctes a manter a flutuabilidade?",
-                options: ["Bexiga natatória", "Fígado", "Coração", "Brânquias"],
+                question: "Qual destas características é exclusiva dos osteíctes?",
+                options: ["Presença de brânquias", "Esqueleto de cartilagem", "Bexiga natatória", "Fendas branquiais"],
+                answer: 2
+            },
+            {
+                question: "Qual das alternativas abaixo é uma função da bexiga natatória nos peixes ósseos?",
+                options: ["Auxiliar na reprodução", "Auxiliar na digestão", "Ajudar a manter a flutuação", "Ajudar na respiração"],
+                answer: 2
+            },
+            {
+                question: "Onde geralmente vivem a maioria dos condrictes?",
+                options: ["Apenas em rios", "Apenas em água doce", "Apenas em água salgada", "Tanto em água doce quanto em água salgada"],
+                answer: 2
+            },
+            {
+                question: "Qual dos seguintes grupos possui espécies com uma boca voltada para a frente, na ponta do focinho?",
+                options: ["Osteíctes", "Condrictes", "Anfíbios", "Répteis"],
                 answer: 0
             },
             {
-                question: "Qual é a principal função das escamas nos peixes?",
-                options: ["Respiração", "Proteção", "Flutuação", "Reprodução"],
+                question: "Qual é uma característica comum entre condrictes e osteíctes?",
+                options: ["Ambos possuem esqueleto de cartilagem", "Ambos possuem escamas placoides", "Ambos respiram por meio de brânquias", "Ambos possuem bexiga natatória"],
+                answer: 2
+            },
+            {
+                question: "Os tubarões são conhecidos por não possuírem uma estrutura que a maioria dos peixes ósseos têm. Que estrutura é essa?",
+                options: ["Escamas", "Bexiga natatória", "Barbatana", "Olhos"],
                 answer: 1
             },
             {
-                question: "Os condrictes possuem quantas aberturas branquiais?",
-                options: ["2", "3", "5", "20"],
+                question: "Qual é o principal órgão sensorial dos tubarões para detectar vibrações na água?",
+                options: ["Olhos", "Linha lateral", "Nadadeiras", "Bexiga natatória"],
+                answer: 1
+            },
+            {
+                question: "Em qual grupo os peixes são conhecidos por possuírem um esqueleto ósseo?",
+                options: ["Condrictes", "Osteíctes", "Anfíbios", "Répteis"],
+                answer: 1
+            },
+            {
+                question: "Os condrictes, como os tubarões, têm uma estrutura especial que os ajuda a flutuar. Qual é essa estrutura?",
+                options: ["Bexiga natatória", "Óleo no fígado", "Linha lateral", "Pulmão"],
+                answer: 1
+            },
+            {
+                question: "Qual dessas características é mais comum em osteíctes do que em condrictes?",
+                options: ["Fendas branquiais", "Barbatana dorsal", "Opérculo cobrindo as brânquias", "Esqueleto cartilaginoso"],
                 answer: 2
             },
             {
-                question: "Qual dos seguintes peixes é considerado um predador?",
-                options: ["Tilápia", "Bacalhau", "Tubarão", "Sardinha"],
-                answer: 2
-            },
-            {
-                question: "Qual grupo de peixes é conhecido por suas nadadeiras pares?",
-                options: ["Agnatha", "Feiticeira", "Osteíctes", "ostracodermos"],
-                answer: 2
-            },
-            {
-                question: "Qual é a importância ecológica dos condrictes?",
-                options: ["Predadores de topo", "Competidores de habitat", "Reprodutores", "Rastreamento de temperatura"],
+                question: "Que tipo de fertilização é mais comum nos condrictes?",
+                options: ["Interna", "Externa", "Assexuada", "Clonagem"],
                 answer: 0
             },
             {
-                question: "Os peixes ósseos geralmente têm:",
-                options: ["Menos diversidade que os condrictes", "Maior diversidade", "Características comuns com mamíferos", "Nenhuma relação com água"],
-                answer: 1
-            },
-            {
-                question: "Qual peixe é famoso por seu comportamento de construção de ninhos?",
-                options: ["Peixe-lua", "Peixe-palhaço", "Peixe-gato", "Peixe-borboleta"],
-                answer: 1
-            },
-            {
-                question: "Qual peixe é conhecido por suas habilidades de camuflagem?",
-                options: ["Peixe-lua", "Peixe-folha", "Peixe-palhaço", "Peixe-esponja"],
-                answer: 1
-            },
-            {
-                question: "Qual é a principal fonte de alimento dos peixes ósseos?",
-                options: ["Plâncton", "Algas", "Peixes menores", "Crustáceos"],
-                answer: 2
-            },
-            {
-                question: "Os condrictes são conhecidos por serem:",
-                options: ["Vivíparos", "Ovovivíparos", "Oviparos", "Todos os anteriores"],
-                answer: 3
-            },
-            {
-                question: "Os tubarões geralmente têm quantos dentes?",
-                options: ["10-15", "20-30", "30-50", "50-300"],
-                answer: 3
-            },
-            {
-                question: "Os peixes ósseos podem ser encontrados em qual tipo de ambiente?",
-                options: ["Somente em água doce", "Somente em água salgada", "Ambos", "Nenhum"],
-                answer: 2
-            },
-            {
-                question: "Os condrictes têm um sistema circulatório:",
-                options: ["Fechado", "Aberto", "Misturado", "Nenhum"],
+                question: "O que significa 'osteíctes' em termos de estrutura corporal?",
+                options: ["Esqueleto de osso", "Esqueleto de cartilagem", "Esqueleto de queratina", "Ausência de esqueleto"],
                 answer: 0
             },
             {
-                question: "Qual das seguintes estruturas é única para os condrictes?",
-                options: ["Bexiga natatória", "Fígado", "Esqueleto cartilaginoso", "Brânquias"],
+                question: "Qual das seguintes características é típica de um peixe ósseo?",
+                options: ["Fendas branquiais expostas", "Esqueleto de cartilagem", "Presença de opérculo", "Ausência de brânquias"],
                 answer: 2
             },
             {
-                question: "Os peixes ósseos são mais diversos em:",
-                options: ["Águas profundas", "Águas rasas", "Águas tropicais", "Águas geladas"],
+                question: "A maioria dos condrictes possui qual tipo de reprodução?",
+                options: ["Ovípara (ovos fora do corpo)", "Vivípara (nascem vivos)", "Ovovivípara (ovos dentro do corpo)", "Reprodução assexuada"],
                 answer: 2
             },
             {
-                question: "Os condrictes têm quantas câmaras no coração?",
-                options: ["1", "2", "3", "4"],
-                answer: 1
+                question: "Qual dos seguintes peixes pertence ao grupo dos osteíctes?",
+                options: ["Raia", "Tubarão", "Linguado", "Quimera"],
+                answer: 2
             },
             {
-                question: "Qual é a função das barbatanas nos peixes?",
-                options: ["Natação", "Respiração", "Nutrientes", "Reprodução"],
+                question: "Qual dessas características ajuda os tubarões a serem grandes predadores?",
+                options: ["Presença de uma linha lateral sensível", "Bexiga natatória", "Boca na ponta do focinho", "Respiração pulmonar"],
                 answer: 0
+            },
+            {
+                question: "Como se chama o grupo ao qual pertencem os peixes ósseos, como o atum e o salmão?",
+                options: ["Condrictes", "Osteíctes", "Anfíbios", "Répteis"],
+                answer: 1
             }
         ];
 
